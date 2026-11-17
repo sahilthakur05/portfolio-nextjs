@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #080808;
+  color: #E2E8F0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #2D2D2D; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #00FF9C; }
+
+.font-mono { font-family: var(--font-mono); }
+.font-sans { font-family: var(--font-sans); }
+
+/* syntax highlight */
+.kw   { color: #C792EA; }
+.str  { color: #C3E88D; }
+.prop { color: #EEFFFF; }
+.cmt  { color: #546E7A; font-style: italic; }
+.fn   { color: #82AAFF; }
+.op   { color: #89DDFF; }
+.br   { color: #FFD700; }
+.bool { color: #FF5370; }
+
+@keyframes blink {
+  0%,100% { opacity:1 } 50% { opacity:0 }
+}
+@keyframes floatY {
+  0%,100% { transform:translateY(0) } 50% { transform:translateY(-8px) }
+}
+@keyframes statusPulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(0,255,156,.4) }
+  50%      { box-shadow:0 0 0 5px rgba(0,255,156,0) }
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px; height: .9em;
+  background: #00FF9C;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+.float-badge { animation: floatY 3s ease-in-out infinite; }
+.float-badge-2 { animation: floatY 3.5s ease-in-out .4s infinite; }
+.float-badge-3 { animation: floatY 2.9s ease-in-out .8s infinite; }
+.float-card   { animation: floatY 3.2s ease-in-out .2s infinite; }
+.status-dot   { animation: statusPulse 2s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, .cursor { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
 }
