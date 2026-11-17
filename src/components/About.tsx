@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 export default function About() {
   return (
     <section id="about" className="py-24 bg-[#111111]">
@@ -8,20 +6,7 @@ export default function About() {
         <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight mb-3">Who I Am</h2>
         <p className="font-mono text-[12px] text-[#3C4048] mb-14">/* a developer who prefers shipping over theorizing */</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_1fr] gap-10 items-start">
-
-          {/* Photo */}
-          <div className="rounded-[14px] overflow-hidden relative"
-            style={{ border: '2px solid #252525', boxShadow: '0 0 0 6px rgba(0,255,156,.04), 0 0 30px rgba(0,255,156,.1)' }}>
-            <div className="relative w-full aspect-[3/4]">
-              <Image src="/profile.jpg" alt="Sahil Thakur" fill className="object-cover object-top" />
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 px-4 pb-3 pt-8"
-              style={{ background: 'linear-gradient(to top,rgba(8,8,8,.92) 0%,transparent 100%)' }}>
-              <span className="block font-mono text-[13px] font-semibold text-[#E2E8F0]">Sahil Thakur</span>
-              <span className="font-mono text-[10px] text-[#00FF9C]">Full Stack Developer</span>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
           {/* Bio */}
           <div>
@@ -73,7 +58,7 @@ export default function About() {
                 ['current_role','"Full Stack Dev"'],
                 ['target','"MNC Engineering"'],
                 ['preparing','"DSA + System Design"'],
-                ['email','"sahil@stacx24.com"'],
+                ['email','"thakursahil29124@gmail.com"'],
               ].map(([k,v]) => (
                 <div key={k} className="flex gap-2 mb-[2px]">
                   <span className="text-[#00FF9C] min-w-[130px]">{k}</span>

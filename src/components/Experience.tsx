@@ -4,10 +4,21 @@ const jobs = [
     branch: 'HEAD → main',
     role: 'Full Stack Developer',
     company: 'Stacx24 / ComDove',
-    date: 'Aug 2022 → Present · 2.6 years',
+    date: 'Aug 12, 2024 → Present',
     desc: 'Built and maintained a full-stack WhatsApp business communication platform from scratch. Architected a distributed backend split into 3 PM2 processes (API / broadcast / scheduler) using an outbox pattern and Redis-backed BullMQ queues. Integrated Meta\'s WhatsApp Business API, implemented an AI-powered RAG auto-reply engine, Razorpay subscription billing, and deployed to AWS Lightsail with CloudWatch monitoring.',
     chips: ['React','Next.js','Node.js','Express','PostgreSQL','Redis','BullMQ','AWS','PM2','Prisma'],
     accentColor: '#00FF9C',
+  },
+  {
+    hash: 'c7d2a19',
+    branch: 'feature/internship',
+    role: 'Frontend Developer Intern',
+    company: '7th Steps',
+    date: 'Apr 2024 → Aug 5, 2024 · 4 months',
+    desc: 'Worked on the frontend UI side of the Aadhyayan e-learning platform (aadhyayan.com). Created the complete UI from scratch and implemented API integrations connecting the frontend to backend services. Gained hands-on experience building production-ready React interfaces.',
+    chips: ['React','JavaScript','HTML5 / CSS3','REST APIs'],
+    accentColor: '#C792EA',
+    link: 'https://aadhyayan.com/',
   },
   {
     hash: '0d1f8b3',
@@ -50,6 +61,13 @@ export default function Experience() {
                 <p className="text-[12px] mb-1" style={{ color: j.accentColor === '#00FF9C' ? '#58A6FF' : '#58A6FF' }}>{j.company}</p>
                 <p className="text-[10px] text-[#3C4048] mb-4">{j.date}</p>
                 <p className="font-sans text-[13.5px] text-[#8892B0] leading-[1.75] mb-4">{j.desc}</p>
+                {'link' in j && j.link && (
+                  <a href={j.link} target="_blank" rel="noreferrer"
+                    className="inline-flex items-center gap-1 font-mono text-[11px] mb-4 no-underline"
+                    style={{ color: j.accentColor }}>
+                    ↗ {j.link}
+                  </a>
+                )}
                 <div className="flex flex-wrap gap-2">
                   {j.chips.map(c => (
                     <span key={c} className="font-mono text-[10px] px-[9px] py-[3px] rounded-[3px]"

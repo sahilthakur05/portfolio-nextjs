@@ -22,10 +22,10 @@ export default function Hero() {
       <MatrixRain />
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
           {/* LEFT — Terminal intro */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 order-1 lg:order-1">
             <p className="font-mono text-[12px] text-[#8892B0]">
               <span className="text-[#00FF9C]">sahil@dev</span>:~$ whoami
             </p>
@@ -50,7 +50,7 @@ export default function Hero() {
             {/* Social links */}
             <div className="flex gap-3 flex-wrap">
               {[
-                { href: 'https://github.com/sahilthakur05stacx', label: 'github', icon: <GithubIcon /> },
+                { href: 'https://github.com/sahilthakur05', label: 'github', icon: <GithubIcon /> },
                 { href: 'https://linkedin.com/in/sahilthakur', label: 'linkedin', icon: <LinkedinIcon /> },
               ].map(({ href, label, icon }) => (
                 <a key={label} href={href} target="_blank" rel="noreferrer"
@@ -74,15 +74,15 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — Photo display */}
-          <div className="hidden lg:flex justify-center items-center min-h-[460px] relative px-14 py-10">
-            {/* Dot grids */}
-            <div className="absolute top-0 right-0 w-40 h-40 opacity-50 pointer-events-none"
+          <div className="flex justify-center items-center min-h-[300px] lg:min-h-[460px] relative px-6 lg:px-14 py-6 lg:py-10 order-2 lg:order-2">
+            {/* Dot grids — desktop only */}
+            <div className="hidden lg:block absolute top-0 right-0 w-40 h-40 opacity-50 pointer-events-none"
               style={{ backgroundImage: 'radial-gradient(circle, #2D2D2D 1.5px, transparent 1.5px)', backgroundSize: '17px 17px' }} />
-            <div className="absolute bottom-0 left-0 w-28 h-28 opacity-40 pointer-events-none"
+            <div className="hidden lg:block absolute bottom-0 left-0 w-28 h-28 opacity-40 pointer-events-none"
               style={{ backgroundImage: 'radial-gradient(circle, #1a2a1a 1.5px, transparent 1.5px)', backgroundSize: '17px 17px' }} />
 
             {/* Main photo */}
-            <div className="relative w-[290px] h-[375px] rounded-[18px] overflow-hidden z-10 flex-shrink-0"
+            <div className="relative w-[220px] h-[285px] lg:w-[290px] lg:h-[375px] rounded-[18px] overflow-hidden z-10 flex-shrink-0"
               style={{ border: '2.5px solid #00FF9C', boxShadow: '0 0 0 8px rgba(0,255,156,.04), 0 0 60px rgba(0,255,156,.2), 0 24px 70px rgba(0,0,0,.6)' }}>
               <Image src="/profile.jpg" alt="Sahil Thakur" fill className="object-cover object-top transition-transform duration-500 hover:scale-105" />
               {/* Name overlay */}
@@ -93,8 +93,8 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating: available badge */}
-            <div className="float-card absolute bottom-8 left-2 flex items-center gap-2 bg-[rgba(18,18,18,0.97)] border border-[#2D2D2D] rounded-[9px] px-4 py-[10px] z-20"
+            {/* Floating: available badge — desktop only */}
+            <div className="hidden lg:flex float-card absolute bottom-8 left-2 items-center gap-2 bg-[rgba(18,18,18,0.97)] border border-[#2D2D2D] rounded-[9px] px-4 py-[10px] z-20"
               style={{ boxShadow: '0 10px 30px rgba(0,0,0,.5)' }}>
               <span className="w-[7px] h-[7px] rounded-full bg-[#00FF9C] inline-block status-dot flex-shrink-0" />
               <span className="font-mono text-[11px] text-[#EEFFFF] whitespace-nowrap">
@@ -104,18 +104,18 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Floating tech badges */}
-            <div className="float-badge absolute top-14 right-0 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
+            {/* Floating tech badges — desktop only */}
+            <div className="hidden lg:block float-badge absolute top-14 right-0 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
               style={{ boxShadow: '0 4px 16px rgba(0,0,0,.35)' }}>⚛ React &amp; Next.js</div>
-            <div className="float-badge-2 absolute top-40 -left-4 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
+            <div className="hidden lg:block float-badge-2 absolute top-40 -left-4 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
               style={{ boxShadow: '0 4px 16px rgba(0,0,0,.35)' }}>▶ Node.js</div>
-            <div className="float-badge-3 absolute bottom-24 right-0 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
+            <div className="hidden lg:block float-badge-3 absolute bottom-24 right-0 font-mono text-[11px] text-[#E2E8F0] bg-[rgba(16,16,16,.95)] border border-[#2D2D2D] px-3 py-[6px] rounded-full z-20 whitespace-nowrap"
               style={{ boxShadow: '0 4px 16px rgba(0,0,0,.35)' }}>🗄 PostgreSQL</div>
 
-            {/* Exp pill */}
-            <div className="float-card absolute top-8 left-2 text-center bg-[#00FF9C] text-black rounded-[11px] px-4 py-3 z-20"
+            {/* Exp pill — desktop only */}
+            <div className="hidden lg:block float-card absolute top-8 left-2 text-center bg-[#00FF9C] text-black rounded-[11px] px-4 py-3 z-20"
               style={{ boxShadow: '0 8px 28px rgba(0,255,156,.4)' }}>
-              <span className="block font-mono text-[22px] font-extrabold leading-tight">2.6</span>
+              <span className="block font-mono text-[22px] font-extrabold leading-tight">2.6*</span>
               <span className="font-mono text-[9px] font-bold tracking-wide">YRS EXP</span>
             </div>
           </div>

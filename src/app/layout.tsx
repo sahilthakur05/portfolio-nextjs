@@ -8,6 +8,9 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mon
 export const metadata: Metadata = {
   title: "Sahil Thakur — Full Stack Developer",
   description: "Full Stack Developer with 2.6 years experience. React, Next.js, Node.js, PostgreSQL, Redis.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
