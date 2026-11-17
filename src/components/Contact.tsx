@@ -1,5 +1,5 @@
 'use client'
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useRef } from 'react'
 
 const contactItems = [
   { icon:'📧', label:'email', value:'thakursahil29124@gmail.com', href:'mailto:thakursahil29124@gmail.com' },
@@ -13,11 +13,30 @@ const WHATSAPP_LINK = 'https://wa.me/918595565275?text=Hi%20Sahil%2C%20I%20saw%2
 export default function Contact() {
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
+  const formRef = useRef<HTMLFormElement>(null)
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setSending(true)
-    setTimeout(() => { setSending(false); setSent(true) }, 1100)
+    setError('')
+    const data = new FormData(formRef.current!)
+    data.append('access_key', '6ba53ddf-9e21-4a90-a7dd-1af42df95a54')
+    data.append('subject', `Portfolio contact: ${data.get('subject') || 'New message'}`)
+    data.append('from_name', 'Portfolio Contact Form')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
+      const json = await res.json()
+      if (json.success) {
+        setSent(true)
+      } else {
+        setError('Something went wrong. Please email me directly.')
+      }
+    } catch {
+      setError('Network error. Please email me directly.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -84,17 +103,17 @@ export default function Contact() {
               </p>
 
               {!sent ? (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
                   {[
-                    { prompt:'name:', placeholder:'Your name', type:'text' },
-                    { prompt:'email:', placeholder:'your@email.com', type:'email' },
-                    { prompt:'subject:', placeholder:'Job opportunity / Collaboration', type:'text' },
+                    { prompt:'name:', placeholder:'Your name', type:'text', name:'name' },
+                    { prompt:'email:', placeholder:'your@email.com', type:'email', name:'email' },
+                    { prompt:'subject:', placeholder:'Job opportunity / Collaboration', type:'text', name:'subject' },
                   ].map(f => (
                     <div key={f.prompt} className="flex items-start gap-2">
                       <span className="text-[#00FF9C] flex-shrink-0 leading-[1.6] pt-[2px]">$</span>
                       <div className="flex-1">
                         <label className="block text-[10px] text-[#8892B0] mb-[5px]">{f.prompt}</label>
-                        <input type={f.type} required placeholder={f.placeholder}
+                        <input type={f.type} name={f.name} required placeholder={f.placeholder}
                           className="w-full bg-[#111111] border border-[#2D2D2D] rounded px-3 py-[9px] font-mono text-[12px] text-[#E2E8F0] outline-none transition-all duration-150 focus:border-[#00FF9C] focus:shadow-[0_0_0_2px_rgba(0,255,156,.07)]" />
                       </div>
                     </div>
@@ -104,10 +123,14 @@ export default function Contact() {
                     <span className="text-[#00FF9C] flex-shrink-0 leading-[1.6] pt-[2px]">$</span>
                     <div className="flex-1">
                       <label className="block text-[10px] text-[#8892B0] mb-[5px]">message:</label>
-                      <textarea required placeholder="Tell me about the role or project..." rows={4}
+                      <textarea name="message" required placeholder="Tell me about the role or project..." rows={4}
                         className="w-full bg-[#111111] border border-[#2D2D2D] rounded px-3 py-[9px] font-mono text-[12px] text-[#E2E8F0] outline-none transition-all duration-150 focus:border-[#00FF9C] resize-y" />
                     </div>
                   </div>
+
+                  {error && (
+                    <p className="font-mono text-[11px] text-[#ff4444]">{error}</p>
+                  )}
 
                   <button type="submit" disabled={sending}
                     className="w-full bg-[#00FF9C] text-black border border-[#00FF9C] py-3 font-mono text-[12px] font-bold rounded tracking-wide cursor-pointer transition-all duration-150 hover:bg-transparent hover:text-[#00FF9C] disabled:opacity-60 disabled:cursor-not-allowed">
