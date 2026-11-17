@@ -24,6 +24,8 @@ export default function Contact() {
     data.append('access_key', '6ba53ddf-9e21-4a90-a7dd-1af42df95a54')
     data.append('subject', `Portfolio contact: ${data.get('subject') || 'New message'}`)
     data.append('from_name', 'Portfolio Contact Form')
+    data.append('replyto', data.get('email') as string)
+    data.append('cc', 'sahil@stacx24.com')
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
       const json = await res.json()
