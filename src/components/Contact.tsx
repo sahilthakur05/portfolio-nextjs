@@ -5,7 +5,7 @@ const contactItems = [
   { icon:'📧', label:'email', value:'thakursahil29124@gmail.com', href:'mailto:thakursahil29124@gmail.com' },
   { icon:'🐙', label:'github', value:'github.com/sahilthakur05', href:'https://github.com/sahilthakur05' },
   { icon:'💼', label:'linkedin', value:'linkedin.com/in/sahilthakur', href:'https://linkedin.com/in/sahilthakur' },
-  { icon:'📍', label:'location', value:'India — open to remote', href:null },
+  { icon:'📍', label:'location', value:'Bhogal, Jungpura, New Delhi 110014', href:null },
 ]
 
 const WHATSAPP_LINK = 'https://wa.me/918595565275?text=Hi%20Sahil%2C%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!'
